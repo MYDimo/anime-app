@@ -1,6 +1,10 @@
 import { Navigation } from "./components/Navigation";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HomePage } from "./components/HomePage";
+import { AnimeListPage } from "./components/AnimeListPage";
+import { ProfilePage } from "./components/ProfilePage";
+import { CreateProfilePage } from "./components/CreateProfilePage";
+import { ErrorPage } from "./components/ProfilePage copy";
 
 
 function App() {
@@ -9,12 +13,12 @@ function App() {
       <Navigation />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/about" />
-        <Route path="/anime-list" />
-        <Route path="/profile" />
+        <Route path="/anime-list" element={<AnimeListPage />}  />
+        <Route path="/profile" element={<ProfilePage />}  />
+        <Route path="/create-profile" element={<CreateProfilePage />}  />
         <Route path="/login" />
         <Route path="/logout" />
-        <Route path="*" />
+        <Route path="*" element={<ErrorPage />}  />
       </Routes>
     </BrowserRouter>
   );
