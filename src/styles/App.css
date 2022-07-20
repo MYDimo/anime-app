@@ -1,0 +1,25 @@
+@import "./normalize.css";
+
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: start; 
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+}
+
+.pageWrapper {
+  width: 80vw;
+}
+
+h1 {
+  width: fit-content;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: fit-content;
+  height: 2.5rem;
+}

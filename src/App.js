@@ -5,6 +5,8 @@ import { AnimeListPage } from "./components/AnimeListPage";
 import { ProfilePage } from "./components/ProfilePage";
 import { CreateProfilePage } from "./components/CreateProfilePage";
 import { ErrorPage } from "./components/ProfilePage copy";
+import "./styles/App.css"
+import { Footer } from "./components/Footer";
 
 
 function App() {
@@ -20,6 +22,7 @@ function App() {
         <Route path="/logout" />
         <Route path="*" element={<ErrorPage />}  />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

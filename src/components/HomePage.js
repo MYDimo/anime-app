@@ -1,5 +1,7 @@
 export const HomePage = () => {
     return (
-        <h1>This is the homepage</h1>
+        <div className="pageWrapper">
+            <h1>This is the homepage</h1>
+        </div>
     );
 }
