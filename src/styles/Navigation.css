@@ -1,0 +1,20 @@
+nav {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    padding: 0 4rem;
+    color:palevioletred;
+    font-weight: bolder;
+}
+
+a:active {
+    background-color: yellow;
+  }
+
+a:focus {
+    outline: none;
+}
