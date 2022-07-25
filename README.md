@@ -15,5 +15,6 @@ The purpose of this app is to showcase all the knowledge learned during Softuni'
   - [x] Create html barebones
   - [x] Share the info from parent trough props
   - [x] map all Anime cards
-  - [x] Style the cards and add more info
-  - [ ] Add link for anime details
+  - [x] Add link for anime details  
+  - [x] Add details page with more details of the card
+  - [ ] Style the cards + details page and add more info

@@ -2,6 +2,7 @@ import { Navigation } from "./components/Navigation";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HomePage } from "./components/HomePage";
 import { AnimeListPage } from "./components/AnimeListPage";
+import { AnimeDetailsPage } from "./components/AnimeDetailsPage";
 import { ProfilePage } from "./components/ProfilePage";
 import { CreateProfilePage } from "./components/CreateProfilePage";
 import { ErrorPage } from "./components/ProfilePage copy";
@@ -15,7 +16,8 @@ function App() {
       <Navigation />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/anime-list" element={<AnimeListPage />}  />
+        <Route path="/anime/*" element={<AnimeDetailsPage />} />
+        {/* <Route path="/anime-list" element={<AnimeListPage />}  /> */}
         <Route path="/profile" element={<ProfilePage />}  />
         <Route path="/create-profile" element={<CreateProfilePage />}  />
         <Route path="/login" />
