@@ -18,3 +18,5 @@ The purpose of this app is to showcase all the knowledge learned during Softuni'
   - [x] Add link for anime details  
   - [x] Add details page with more details of the card
   - [ ] Style the cards + details page and add more info
+- [ ] Fix style of homepage cards
+- [ ] Create HomePage a state in context for the fetched catalogue, so that when you go to details and back you don't fetch again as it stays the same.
