@@ -6,22 +6,40 @@
     align-items: center;
 }
 
-.animeCard, .characterCard {
+.animeCard {
     width: 550px;
     display: flex;
     flex-flow: row;
     background-color: rgba(0, 0, 0, 0.055);
     margin: 10px 0px;
-    border-radius: 10px;
+    border-radius: 15px;
     border: 0.5px solid rgba(0, 0, 0, 0.5);
+}
 
+.characterCard {
+    width: 280px;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.055);
+    margin: 10px 10px;
+    padding: 10px 10px;
+    border-radius: 15px;
+    border: 0.5px solid rgba(0, 0, 0, 0.5);
+}
+
+.characterName {
+    padding: 5px 0px;
+    margin: 0px;
+    text-align: center;
+    width: fit-content;
 }
 
 .cardImg {
-    width: 200px;
-    height: auto;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+    width: 180px;
+    height: 280px;
+    border-radius: 15px;
 }
 
 .cardInfoWrapper {

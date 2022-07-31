@@ -10,7 +10,10 @@ export const AnimeDetailsPage = () => {
     const { anime_id } = location.state;
     const { anime_title } = location.state;
     const [animeDetailsData, setAnimeDetailsData] = useState(null);
-    const [charactersData, setCharactersData] = useState(null);
+    const [charactersData, setCharactersData] = useState({
+        initialData: null,
+        searchData: null
+    });
     
     useEffect(() => {
         getAnimeDetails(anime_id).then(data => {
@@ -19,13 +22,27 @@ export const AnimeDetailsPage = () => {
     }, [])
 
     const clickHandler = () => {
-        if (!charactersData) {
-            getAnimeCharacters(anime_id).then(data => {
-                setCharactersData(data);
+        if (!charactersData.initialData) {
+            getAnimeCharacters(anime_id).then(fetchedData => {
+                setCharactersData({
+                    initialData: fetchedData,
+                    searchData: fetchedData
+                });
             });
         } else {
-            setCharactersData(null);
+            setCharactersData({
+                initialData: null,
+                searchData: null
+            });
         }
+    }
+
+    const searchCharHandler = (e) => {
+        let charName = e.target.value;
+        setCharactersData(oldData => ({
+            ...oldData, 
+            searchData: oldData.initialData.filter(x => x.character.name.includes(charName))
+        }));
     }
 
     return (
@@ -35,14 +52,17 @@ export const AnimeDetailsPage = () => {
                 <img src={animeDetailsData.images.jpg.large_image_url} alt={`${anime_title} cover img`} />
             }
             <button onClick={clickHandler}>
-                {!charactersData
+                {!charactersData.initialData
                     ? 'Show anime characters'
                     : 'Hide anime characters'
                 }
             </button>
-            {charactersData && 
-                <div className="charactersList">
-                    {charactersData.map(x => <CharacterCard key={x.character.mal_id} characterData={x}/>)}
+            {charactersData.initialData && 
+                <div>
+                    <input type="text" placeholder='Search character' onChange={searchCharHandler}/>
+                    <div className="charactersList">
+                        {charactersData.searchData.map(x => <CharacterCard key={x.character.mal_id} characterData={x}/>)}
+                    </div>
                 </div>
             }
         </div>
