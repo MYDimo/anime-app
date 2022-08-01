@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { getAnimeCharacters, getAnimeDetails } from '../utils/api-calls';
-import CharacterCard from './CharacterCard';
-import "../styles/listAndCardStyles.css"
+import { getAnimeCharacters, getAnimeDetails } from '../../utils/api-calls';
+import CharacterCard from '../CharacterCard';
+import "../../styles/listAndCardStyles.css"
 
 
 export const AnimeDetailsPage = () => {
