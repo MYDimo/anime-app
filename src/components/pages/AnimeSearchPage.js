@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { searchAnime } from "../../utils/api-calls";
+import { searchAnime } from "../../services/api-calls";
 import { AnimeCard } from "../AnimeCard";
 import { useLocation } from 'react-router-dom';
 

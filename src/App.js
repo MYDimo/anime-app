@@ -1,3 +1,6 @@
+import { useContext, useState } from "react";
+import { AuthContext } from "./contexts/AuthContext";
+
 import { Navigation } from "./components/Navigation";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HomePage } from "./components/pages/HomePage";
@@ -12,21 +15,29 @@ import { LoginPage } from "./components/pages/LoginPage";
 
 
 function App() {
+  const [userAuth, setUserAuth] = useState({})
+
+  const onUserLogin = (authData) => {
+    setUserAuth(authData);
+  }
+
   return (
-    <BrowserRouter>
-      <Navigation />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/anime/*" element={<AnimeDetailsPage />} />
-        <Route path="/profile" element={<ProfilePage />}  />
-        <Route path="/create-profile" element={<CreateProfilePage />} />
-        <Route path="/search-anime" element={<AnimeSearchPage />}  />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/logout" />
-        <Route path="*" element={<ErrorPage />}  />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+    <AuthContext.Provider value={{ userAuth, onUserLogin }}>
+      <BrowserRouter>
+        <Navigation />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/anime/*" element={<AnimeDetailsPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/create-profile" element={<CreateProfilePage />} />
+          <Route path="/search-anime" element={<AnimeSearchPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/logout" />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </AuthContext.Provider>
   );
 }
 

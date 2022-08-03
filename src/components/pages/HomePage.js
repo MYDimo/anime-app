@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
-import { getTopAnime } from "../../utils/api-calls";
+import { getTopAnime } from "../../services/api-calls";
 import { AnimeCard } from "../AnimeCard";
-import { Link } from "react-router-dom";
 import "../../styles/listAndCardStyles.css";
 
 export const HomePage = () => {
     const [animeList, setAnimeList] = useState(null);
-    const [searchAnimeString, setSearchAnime] = useState('');
     let topAnimeListSession = sessionStorage.getItem('topAnimeListSession');
 
     useEffect(() => {
