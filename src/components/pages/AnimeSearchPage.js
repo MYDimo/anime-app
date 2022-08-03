@@ -31,7 +31,7 @@ export const AnimeSearchPage = () => {
 
     return (
         <div className="pageWrapper">
-            <h1>Hey, check out the most favourite Animes, or search for a specific one.</h1>
+            <p>Hey, search for an anime below.</p>
             <input type="text" placeholder="search anime" onChange={(e) => setSearchAnime(e.target.value)} />
             <button onClick={searchHandler}>Search</button>
             {animeList &&
