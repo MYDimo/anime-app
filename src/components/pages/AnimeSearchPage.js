@@ -32,7 +32,7 @@ export const AnimeSearchPage = () => {
     return (
         <div className="pageWrapper">
             <p>Hey, search for an anime below.</p>
-            <input type="text" placeholder="search anime" onChange={(e) => setSearchAnime(e.target.value)} />
+            <input type="text" placeholder="search anime" onChange={(e) => setSearchAnime(e.target.value)} onKeyDown={(e) => e.key === 'Enter' ? searchHandler(): false}/>
             <button onClick={searchHandler}>Search</button>
             {animeList &&
                 <div className="animeList">

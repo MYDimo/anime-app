@@ -1,5 +1,15 @@
 export const CreateProfilePage = () => {
+
+
     return (
-        <h1>This is the Create Profile Page</h1>
+        <div className="pageWrapper">
+            <h1>Page for creating Profile</h1>
+            <form action="submit">
+                <input type="text" name="email" placeholder="email" />
+                <input type="pasword" name="password" placeholder="password" />
+                <input type="pasword" name="repeat-password" placeholder="repeat-password" />
+                <button>Create a profile</button>
+            </form>
+        </div>
     );
 }
