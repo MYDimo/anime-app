@@ -9,14 +9,7 @@ The purpose of this app is to showcase all the knowledge learned during Softuni'
 
 
 # To do list:
-- [ ] Add endpoints files //myanimelist API
-- [x] Fetch top Animes
-- [ ] Create Anime Card
-  - [x] Create html barebones
-  - [x] Share the info from parent trough props
-  - [x] map all Anime cards
-  - [x] Add link for anime details  
-  - [x] Add details page with more details of the card
-  - [ ] Style the cards + details page and add more info
-- [ ] Fix style of homepage cards
-- [ ] Create HomePage a state in context for the fetched catalogue, so that when you go to details and back you don't fetch again as it stays the same.
+- [ ] Create profile *(same function as Login, maybe create one component for both)*
+- [ ] Research how to create collections on the server and link users to it. Or maybe it should be directly added to the user?
+- [ ] Route guards and buttons add to favourites
+- [ ] Style the website to look more appealing
