@@ -25,8 +25,8 @@ export const CreateProfilePage = () => {
             <h1>Page for creating Profile</h1>
             <form action="submit" onSubmit={submitCredentialsHandler}>
                 <input type="text" name="email" placeholder="email" />
-                <input type="pasword" name="password" placeholder="password" />
-                <input type="pasword" name="repeat-password" placeholder="repeat-password" />
+                <input type="password" name="password" placeholder="password" />
+                <input type="password" name="repeat-password" placeholder="repeat-password" />
                 <button>Create a profile</button>
             </form>
         </div>
