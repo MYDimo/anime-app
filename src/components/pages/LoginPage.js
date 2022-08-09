@@ -28,6 +28,5 @@ export const LoginPage = () => {
                 <p>Don't have a profile? <Link to={'/create-profile'}>Create one</Link>.</p>
             </form>
         </div>
-
     );
 }
