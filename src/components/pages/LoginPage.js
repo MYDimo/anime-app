@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { apiLogin } from "../../services/authService";
+import { userLogin } from "../../services/authService";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 
@@ -12,7 +12,7 @@ export const LoginPage = () => {
 
         const { email, password } = Object.fromEntries(new FormData(e.target));
 
-        apiLogin(email, password).then(authData => {
+        userLogin(email, password).then(authData => {
             onUserLogin(authData);
             navigate('/');
         })

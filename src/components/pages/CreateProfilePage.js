@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
-import { apiCreateUser } from "../../services/authService";
+import { userRegister } from "../../services/authService";
 
 
 export const CreateProfilePage = () => {
@@ -14,7 +14,7 @@ export const CreateProfilePage = () => {
         const { email, password, rePassword } = Object.fromEntries(new FormData(e.target))
         
         //Check for pass and rePass and throw error, if okay check for other errors
-        apiCreateUser(email, password).then(authData => {
+        userRegister(email, password).then(authData => {
             onUserLogin(authData);
             navigate('/');
         })

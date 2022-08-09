@@ -1,22 +1,40 @@
-export const request = async (method, url, data) => {
+export const request = async (method, url, data, accessToken) => {
     try {
         let buildRequest;
+        let options = {
+            'content-type': 'application/json',
+        }
+        
+        if (accessToken) {
+            options['X-Authorization'] = accessToken;
+        }
 
         if (method === 'GET') {
-            buildRequest = fetch(url);
+            if (accessToken) {
+                options['X-Authorization'] = accessToken;
+                buildRequest = fetch(url, {
+                    method,
+                    headers: options,
+                });
+            } else {
+                buildRequest = fetch(url);
+            }
         } else {
             buildRequest = fetch(url, {
                 method,
-                headers: {
-                    'content-type': 'application/json'
-                },
+                headers: options,
                 body: JSON.stringify(data)
             })
         }
-
+        
         const response = await buildRequest;
-
-        const result = await response.json();
+        let result;
+        
+        if (response.status == '204') {
+            result = null;
+        } else {
+            result = await response.json();
+        }
 
         return result;
     } catch (error) {
