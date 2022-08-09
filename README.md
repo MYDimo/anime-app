@@ -13,3 +13,4 @@ The purpose of this app is to showcase all the knowledge learned during Softuni'
 - [ ] Research how to create collections on the server and link users to it. Or maybe it should be directly added to the user?
 - [ ] Route guards and buttons add to favourites
 - [ ] Style the website to look more appealing
+- [ ] Error handling at login/logout/search
