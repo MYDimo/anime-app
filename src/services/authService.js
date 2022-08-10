@@ -12,3 +12,7 @@ export const userRegister = (email, password) => {
 export const userLogout = (accessToken) => {
     return request.get(`${baseUrl}/logout`, {}, accessToken);
 }
+
+export const userGetFavourites = (userId, accessToken) => {
+    return request.get(`http://localhost:3030/data/favourites?where=_ownerId%3D%22${userId}%22`, {}, accessToken);
+}

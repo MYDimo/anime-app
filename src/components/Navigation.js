@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useContext } from 'react';
 import { AuthContext } from "../contexts/AuthContext";
 import "../styles/navigation.css";
@@ -11,7 +11,8 @@ export const Navigation = () => {
         <nav>
             <Link to="/">Home</Link>
             <Link to="/search-Anime">Search Anime</Link>
-            {Object.keys(userAuth).length?
+            {userAuth._id
+                ?
                 <>
                     <Link to="/profile">Profile</Link>
                     <Link to="/logout">Logout</Link>
