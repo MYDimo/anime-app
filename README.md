@@ -23,3 +23,6 @@ The purpose of this app is to showcase all the knowledge learned during Softuni'
 - [ ] Error handling at login/logout/search
 - [ ] Route guards and buttons add to favourites
 - [ ] Style the website to look more appealing
+
+# Issues to fix:
+- [ ] Login with wrong credentials still navigate to homepage

@@ -2,7 +2,7 @@ export const request = async (method, url, data, accessToken) => {
     try {
         let buildRequest;
         let options = {
-            'content-type': 'application/json',
+            'Content-Type': 'application/json',
         }
         
         if (accessToken) {
@@ -46,3 +46,4 @@ export const get = request.bind({}, 'GET');
 export const post = request.bind({}, 'POST');
 export const put = request.bind({}, 'PUT');
 export const remove = request.bind({}, 'DELETE');
+export const patch = request.bind({}, 'PATCH');
