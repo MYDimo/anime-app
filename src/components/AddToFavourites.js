@@ -10,10 +10,12 @@ export const AddToFavourites = (props) => {
     const addFavsHandler = () => {
         getUserFavourites(userAuth._id, userAuth.accessToken)
             .then(result => {
-                if (result.code == 404) {
+                console.log(result);
+                if (result.code == 404 || result.length == 0) {
                     userCreateFavouritesEntry(userAuth.accessToken)
                         .then(newlyCreatedCollection => setuserCollection(newlyCreatedCollection));
                 } else {
+                    console.log("im doing this");
                     setuserCollection(result[0])
                 } 
             })
