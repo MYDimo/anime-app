@@ -25,30 +25,31 @@ export const userUpdateFavouritesEntry = (
     userId, userCollection, newFavouritesEntry, accessToken
 ) => {
 
-    
-    const newFavCollection = {
-            animes: userCollection.animes,
-            characters: userCollection.characters
-        }
-        
     if (Object.keys(newFavouritesEntry).length > 0) {
-        newFavouritesEntry.hasOwnProperty('episodes') 
-        ? userCollection.animes.push({
-            title: newFavouritesEntry.title,
-            episodes: newFavouritesEntry.episodes,
-            images: newFavouritesEntry.images,
-            aired: newFavouritesEntry.aired,
-            mal_id: newFavouritesEntry.mal_id,
-        }) 
-        : userCollection.characters.push({
-           character: {
-                name: newFavouritesEntry.character.name,
-                images: newFavouritesEntry.character.images,
-                charMal_id: newFavouritesEntry.character.mal_id
-            }
-        });
+        newFavouritesEntry.hasOwnProperty('mal_id')
+            ? userCollection.animes.push({
+                title: newFavouritesEntry.title,
+                episodes: newFavouritesEntry.episodes,
+                images: newFavouritesEntry.images,
+                aired: newFavouritesEntry.aired,
+                mal_id: newFavouritesEntry.mal_id,
+                score: newFavouritesEntry.score,
+                duration: newFavouritesEntry.duration
+            })
+            : userCollection.characters.push({
+                character: {
+                    name: newFavouritesEntry.character.name,
+                    images: newFavouritesEntry.character.images,
+                    charMal_id: newFavouritesEntry.character.mal_id
+                }
+            });
     }
-    
+
+
+    const newFavCollection = {
+        animes: userCollection.animes,
+        characters: userCollection.characters
+    }
     // I guess the server can only process an Object with max 25 keys
     // let objSliced = Object.fromEntries(
     //     Object.entries(newFavouritesEntry).slice(1, 25)

@@ -2,20 +2,33 @@ import { Link, useNavigate } from "react-router-dom";
 import { userLogin } from "../../services/authService";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
+import { ProfileContext } from "../../contexts/ProfileContext";
 
 export const LoginPage = () => {
     const navigate = useNavigate();
     const { onUserLogin } = useContext(AuthContext);
+    const { setUserFavourites } = useContext(ProfileContext);
 
     const submitCredentialsHandler = (e) => {
         e.preventDefault();
 
         const { email, password } = Object.fromEntries(new FormData(e.target));
 
-        userLogin(email, password).then(authData => {
-            onUserLogin(authData);
-            navigate('/');
-        })
+        userLogin(email, password)
+            .then(authData => {
+                onUserLogin(authData);
+                navigate('/profile');
+                navigate('/');
+            })
+            .then(() => {
+                setUserFavourites(
+                    {
+                        animes: [],
+                        characters: [],
+                        _id: ""
+                    }
+                )
+            })
     }
 
     return (

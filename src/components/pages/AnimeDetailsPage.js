@@ -1,11 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { getAnimeCharacters, getAnimeDetails } from '../../services/api-calls';
+import { AddToFavourites } from "../AddToFavourites";
 import CharacterCard from '../CharacterCard';
 import "../../styles/listAndCardStyles.css"
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/AuthContext';
 
 
 export const AnimeDetailsPage = () => {
+    const { userAuth } = useContext(AuthContext);
+
     const location = useLocation();
     const { anime_id } = location.state;
     const { anime_title } = location.state;
@@ -14,7 +19,7 @@ export const AnimeDetailsPage = () => {
         initialData: null,
         searchData: null
     });
-    
+
     useEffect(() => {
         getAnimeDetails(anime_id).then(data => {
             setAnimeDetailsData(data);
@@ -40,7 +45,7 @@ export const AnimeDetailsPage = () => {
     const searchCharHandler = (e) => {
         let charName = e.target.value;
         setCharactersData(oldData => ({
-            ...oldData, 
+            ...oldData,
             searchData: oldData.initialData.filter(x => x.character.name.includes(charName))
         }));
     }
@@ -51,17 +56,20 @@ export const AnimeDetailsPage = () => {
             {animeDetailsData &&
                 <img src={animeDetailsData.images.jpg.large_image_url} alt={`${anime_title} cover img`} />
             }
+            {userAuth._id &&
+                <AddToFavourites animeInfo={animeDetailsData} />
+            }
             <button onClick={clickHandler}>
                 {!charactersData.initialData
                     ? 'Show anime characters'
                     : 'Hide anime characters'
                 }
             </button>
-            {charactersData.initialData && 
+            {charactersData.initialData &&
                 <div>
-                    <input type="text" placeholder='Search character' onChange={searchCharHandler}/>
+                    <input type="text" placeholder='Search character' onChange={searchCharHandler} />
                     <div className="charactersList">
-                        {charactersData.searchData.map(x => <CharacterCard key={x.character.mal_id} characterData={x}/>)}
+                        {charactersData.searchData.map(x => <CharacterCard key={x.character.mal_id} characterData={x} />)}
                     </div>
                 </div>
             }
