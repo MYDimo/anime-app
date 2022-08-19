@@ -13,11 +13,22 @@ export const CreateProfilePage = () => {
 
         const { email, password, rePassword } = Object.fromEntries(new FormData(e.target))
         
-        //Check for pass and rePass and throw error, if okay check for other errors
-        userRegister(email, password).then(authData => {
-            onUserLogin(authData);
-            navigate('/');
-        })
+        if (email.length == 0 || password.length == 0 || rePassword.length == 0) {
+            console.log('All fields must be filled')
+        }
+        else if (password !== rePassword) {
+            console.log('Passwords are not matching');
+        } else {
+            userRegister(email, password)
+            .then(authData => {
+                if (authData.code !== 409) {
+                    onUserLogin(authData);
+                    navigate('/');
+                } else {
+                    console.log(authData.message);
+                }
+            })
+        }
     }
 
     return (
@@ -26,7 +37,7 @@ export const CreateProfilePage = () => {
             <form action="submit" onSubmit={submitCredentialsHandler}>
                 <input type="text" name="email" placeholder="email" />
                 <input type="password" name="password" placeholder="password" />
-                <input type="password" name="repeat-password" placeholder="repeat-password" />
+                <input type="password" name="rePassword" placeholder="repeat-password" />
                 <button>Create a profile</button>
             </form>
         </div>

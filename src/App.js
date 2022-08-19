@@ -41,7 +41,7 @@ function App() {
         })
         .catch(error => {
           // setError('No favourite animes or characters added yet.')
-          console.log('No favourite animes or characters added yet.');
+          // console.log('No favourite animes or characters added yet.');
         });
     } else {
       userUpdateFavouritesEntry(userAuth._id, userFavourites, {}, userAuth.accessToken);

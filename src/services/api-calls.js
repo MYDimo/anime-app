@@ -23,7 +23,5 @@ export const searchAnime = async (searchQuery) => {
     const response = await fetch(`https://api.jikan.moe/v4/anime?q=${searchQuery}&type=tv`);
     const receivedData = await response.json();
 
-    console.log(receivedData.data);
-
     return receivedData.data;
 }

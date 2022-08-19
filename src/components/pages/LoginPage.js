@@ -13,11 +13,10 @@ export const LoginPage = () => {
         e.preventDefault();
 
         const { email, password } = Object.fromEntries(new FormData(e.target));
-
+        
         userLogin(email, password)
             .then(authData => {
                 onUserLogin(authData);
-                navigate('/profile');
                 navigate('/');
             })
             .then(() => {
