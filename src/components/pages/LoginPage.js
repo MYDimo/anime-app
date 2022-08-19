@@ -3,21 +3,30 @@ import { userLogin } from "../../services/authService";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { ProfileContext } from "../../contexts/ProfileContext";
+import { useState } from "react";
 
 export const LoginPage = () => {
     const navigate = useNavigate();
     const { onUserLogin } = useContext(AuthContext);
     const { setUserFavourites } = useContext(ProfileContext);
+    const [errorMessage, setErrorMessage] = useState(null);
 
     const submitCredentialsHandler = (e) => {
         e.preventDefault();
 
         const { email, password } = Object.fromEntries(new FormData(e.target));
         
-        userLogin(email, password)
+        if (!email || !password) {
+            setErrorMessage("Please write down your credentials in the fields")
+        } else {
+            userLogin(email, password)
             .then(authData => {
-                onUserLogin(authData);
-                navigate('/');
+                if (authData.code !== 403) {
+                    onUserLogin(authData);
+                    navigate('/');
+                } else {
+                    setErrorMessage(authData.message);
+                }
             })
             .then(() => {
                 setUserFavourites(
@@ -28,6 +37,7 @@ export const LoginPage = () => {
                     }
                 )
             })
+        }
     }
 
     return (
@@ -37,8 +47,13 @@ export const LoginPage = () => {
                 <input type="text" name="email" placeholder="email" />
                 <input type="password" name="password" placeholder="password" />
                 <button>Log in</button>
-                <p>Don't have a profile? <Link to={'/create-profile'}>Create one</Link>.</p>
             </form>
+            {errorMessage &&
+                <div className="div">
+                    <p className="errorMessage">{errorMessage}</p>
+                </div>
+            }
+            <p>Don't have a profile? <Link to={'/create-profile'}>Create one</Link>.</p>
         </div>
     );
 }

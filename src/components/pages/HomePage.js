@@ -21,7 +21,7 @@ export const HomePage = () => {
 
     return (
         <div className="pageWrapper">
-            <p>Hey, check out the most favourite Animes, or search for a specific one.</p>
+            <h1>Hey, check out the most favourite Animes, or search for a specific one.</h1>
             {animeList &&
                 <div className="animeList">
                     {animeList.map(anime => <AnimeCard key={anime.mal_id} anime={anime} />)}
