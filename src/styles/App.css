@@ -29,3 +29,44 @@ h1, p {
   display: flex;
   flex-direction: column;
 }
+
+.searchWrapper {
+  width: 15vw;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.searchWrapper > button {
+  width: 65px;
+  align-self: center;
+  margin-top: 15px;
+}
+
+.searchWrapper > input {
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+.animeInfoCopy {
+  display: flex;
+  padding: 0 10vw;
+}
+
+.rightSide {
+  padding-left: 50px;
+}
+
+.animetitle {
+  margin: 0;
+}
+
+.charInfoWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.charInfoWrapper > input {
+  width: 200px;
+  align-self: center;
+}

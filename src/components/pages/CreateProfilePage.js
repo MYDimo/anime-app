@@ -38,17 +38,15 @@ export const CreateProfilePage = () => {
     return (
         <div className="pageWrapper">
             <h1>Create a profile</h1>
-            <form action="submit" onSubmit={submitCredentialsHandler}>
+            <form action="submit" onSubmit={submitCredentialsHandler} className="searchWrapper">
                 <input type="text" name="email" placeholder="email" />
                 <input type="password" name="password" placeholder="password" />
                 <input type="password" name="rePassword" placeholder="repeat-password" />
+                {errorMessage &&
+                    <p className="errorMessage">{errorMessage}</p>
+                }
                 <button>Create</button>
             </form>
-            {errorMessage &&
-                <div className="div">
-                    <p className="errorMessage">{errorMessage}</p>
-                </div>
-            }
         </div>
     );
 }

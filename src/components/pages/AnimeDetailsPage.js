@@ -52,21 +52,31 @@ export const AnimeDetailsPage = () => {
 
     return (
         <div className="pageWrapper">
-            <h1>This is {anime_title} Details Page</h1>
-            {animeDetailsData &&
-                <img src={animeDetailsData.images.jpg.large_image_url} alt={`${anime_title} cover img`} />
-            }
-            {userAuth._id &&
-                <AddToFavourites animeInfo={animeDetailsData} />
-            }
-            <button onClick={clickHandler}>
-                {!charactersData.initialData
-                    ? 'Show anime characters'
-                    : 'Hide anime characters'
+            <div className="animeInfoWrapper">
+                {animeDetailsData &&
+                    <div className="animeInfoCopy">
+                        <img src={animeDetailsData.images.jpg.large_image_url} className="leftSide" alt={`${anime_title} cover img`} />
+                        <div className="rightSide">
+                            <h1 className="animeTitle">{anime_title} Details</h1>
+                            <p><b>Score:</b> {animeDetailsData.score}</p>
+                            <p><b>Status:</b> {animeDetailsData.status}</p>
+                            <p><b>Duration:</b> {animeDetailsData.duration}</p>
+                            <p><b>Synopsis:</b> {animeDetailsData.synopsis}</p>
+                            {userAuth._id &&
+                                <AddToFavourites animeInfo={animeDetailsData} />
+                            }
+                            <button onClick={clickHandler}>
+                                {!charactersData.initialData
+                                    ? 'Show anime characters'
+                                    : 'Hide anime characters'
+                                }
+                            </button>
+                        </div>
+                    </div>
                 }
-            </button>
+            </div>
             {charactersData.initialData &&
-                <div>
+                <div className='charInfoWrapper'>
                     <input type="text" placeholder='Search character' onChange={searchCharHandler} />
                     <div className="charactersList">
                         {charactersData.searchData.map(x => <CharacterCard key={x.character.mal_id} characterData={x} />)}

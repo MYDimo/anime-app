@@ -15,7 +15,7 @@ export const AnimeSearchPage = () => {
             setAnimeList(JSON.parse(searchAnimeListSession));
         }
 
-        if (location.state){
+        if (location.state) {
             let { passedSearchString } = location.state;
             setSearchAnime(passedSearchString);
             console.log(passedSearchString);
@@ -32,8 +32,10 @@ export const AnimeSearchPage = () => {
     return (
         <div className="pageWrapper">
             <h1>Hey, search for an anime below.</h1>
-            <input type="text" placeholder="search anime" onChange={(e) => setSearchAnime(e.target.value)} onKeyDown={(e) => e.key === 'Enter' ? searchHandler(): false}/>
-            <button onClick={searchHandler}>Search</button>
+            <div className="searchWrapper">
+                <input type="text" placeholder="search anime" onChange={(e) => setSearchAnime(e.target.value)} onKeyDown={(e) => e.key === 'Enter' ? searchHandler() : false} />
+                <button onClick={searchHandler}>Search</button>
+            </div>
             {animeList &&
                 <div className="animeList">
                     {animeList.map(anime => <AnimeCard key={anime.mal_id} anime={anime} />)}

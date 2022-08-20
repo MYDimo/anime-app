@@ -15,44 +15,42 @@ export const LoginPage = () => {
         e.preventDefault();
 
         const { email, password } = Object.fromEntries(new FormData(e.target));
-        
+
         if (!email || !password) {
-            setErrorMessage("Please write down your credentials in the fields")
+            setErrorMessage("Please fill out all fields")
         } else {
             userLogin(email, password)
-            .then(authData => {
-                if (authData.code !== 403) {
-                    onUserLogin(authData);
-                    navigate('/');
-                } else {
-                    setErrorMessage(authData.message);
-                }
-            })
-            .then(() => {
-                setUserFavourites(
-                    {
-                        animes: [],
-                        characters: [],
-                        _id: ""
+                .then(authData => {
+                    if (authData.code !== 403) {
+                        onUserLogin(authData);
+                        navigate('/');
+                    } else {
+                        setErrorMessage(authData.message);
                     }
-                )
-            })
+                })
+                .then(() => {
+                    setUserFavourites(
+                        {
+                            animes: [],
+                            characters: [],
+                            _id: ""
+                        }
+                    )
+                })
         }
     }
 
     return (
         <div className="pageWrapper">
             <h1>This is the Login Page</h1>
-            <form action="submit" onSubmit={submitCredentialsHandler}>
+            <form action="submit" onSubmit={submitCredentialsHandler} className="searchWrapper">
                 <input type="text" name="email" placeholder="email" />
                 <input type="password" name="password" placeholder="password" />
+                {errorMessage &&
+                    <p className="errorMessage">{errorMessage}</p>
+                }
                 <button>Log in</button>
             </form>
-            {errorMessage &&
-                <div className="div">
-                    <p className="errorMessage">{errorMessage}</p>
-                </div>
-            }
             <p>Don't have a profile? <Link to={'/create-profile'}>Create one</Link>.</p>
         </div>
     );

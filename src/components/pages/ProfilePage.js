@@ -33,20 +33,24 @@ export const ProfilePage = () => {
     return (
         <div className="pageWrapper">
             <h1>Welcome, {userAuth.email}</h1>
-            {favouritesError &&
-                <h1>{favouritesError}</h1>
+            {userFavourites.animes.length == 0 && userFavourites.characters.length == 0 &&
+                <h1>No animes, nor characters in favourites yet.</h1>
             }
             {userFavourites.animes.length > 0 &&
-                <div className="animeList">
+                <>
                     <h2>Favourite Animes</h2>
-                    {userFavourites.animes.map(anime => <AnimeCard key={anime.mal_id} anime={anime} removeHandler={removeFromAnimesHandler} />)}
-                </div>
+                    <div className="animeList">
+                        {userFavourites.animes.map(anime => <AnimeCard key={anime.mal_id} anime={anime} removeHandler={removeFromAnimesHandler} />)}
+                    </div>
+                </>
             }
             {userFavourites.characters.length > 0 &&
-                <div className="charactersList">
+                <>
                     <h2>Favourite Characters</h2>
-                    {userFavourites.characters.map(x => <CharacterCard key={x.character.charMal_id} characterData={x} removeHandler={removeFromCharsHandler} />)}
-                </div>
+                    <div className="charactersList">
+                        {userFavourites.characters.map(x => <CharacterCard key={x.character.charMal_id} characterData={x} removeHandler={removeFromCharsHandler} />)}
+                    </div>
+                </>
             }
         </div>
 
