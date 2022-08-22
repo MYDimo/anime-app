@@ -70,3 +70,8 @@ h1, p {
   width: 200px;
   align-self: center;
 }
+
+.errorMessage {
+  font-weight: bold;
+  color: crimson;
+}
